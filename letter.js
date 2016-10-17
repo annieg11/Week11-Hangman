@@ -1,23 +1,15 @@
 
 
-// var GameList = require('./game.js');
-// var NewWord = function(word,NewWord){
-//   this.word = for(var i =0;i<word.length;i++);
-//   this.NewWord =new Array(word.length);
-//   this.addletter =function(){
-//     NewWord[i] = '_';
-//   }
-//   }
-
-var Letter = function(let,letterShown) {
+var Letter = function(let) {
   
 // property to store the actual letter  
-this.let =let,
+this.let =let;
 // property/boolean if the letter can be shown 
-this.letterShown = letterShown,
+this.letterShown = false;
   this.letterRender = function() {
+
     //if appear is false then show the _
-    if(letterShown==false){
+    if(this.let==false){
       console.log('_');
       //else appear is true then show character
     }else{
