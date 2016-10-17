@@ -7,13 +7,15 @@ var Letter = require('./letter.js');
    this.word = wrdString;
 // // a collection of letter objects
    this.let = [];
-//  property is the word found?
+//  property is the word found put to false.
    this.Wordfound = false;
+   // this function gets letters for a word
    this.getLets = function() {
 //  populate the collection above with new Letter objects
 for(var i=0; i< this.word.length;i++){
+  // To create new letter object.
  var newLetter = new Letter(this.word[i]);
- // To create new letter object.
+ 
  this.let.push(newLetter);
 }
   };
@@ -49,7 +51,9 @@ str = this.let[i].letterRender();
 
    };
  }
-
+// var w = new Word('Thor');
+// var test = w.getLets('Thor');
+// var t = w.checkIfLetterFound('o');
 //  export to use in main.js
  module.exports = Word;
 

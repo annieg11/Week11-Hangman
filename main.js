@@ -2,7 +2,7 @@
 // var inquirer = require('inquirer');
 
 var game = require('./game.js');
-var WordCon = require('./word.js');
+var Word = require('./word.js');
 var gamelist = game();
  console.log(gamelist);
 //  require prompt to use to make the game 
@@ -17,12 +17,14 @@ var createGame = {
     currentWrd : null, //the word object
     startGame : function (wrd){
     //make sure the user has 10 guesses
-    this.userGuess = 10;
+    var userGuess = 10;
 
     //get a random word from the array
-    this.RandomWord = wordBank[Math.floor(Math.random()* wordBank.length)];
+    var RandomWord = this.wordBank[Math.floor(Math.random()*this.wordBank.length)];
+    console.log(RandomWord);
     //populate currentWrd (made from Word constructor function) object with letters
-
+    this.currentWrd = new Word(RandomWord);
+    this.currentWrd.getLets();
     this.keepPromptingUser();
 
     }, 
@@ -35,12 +37,11 @@ var createGame = {
     prompt.get(['guessLetter'], function(err, result) {
         // result is an object like this: { guessLetter: 'f' }
         //console.log(result);
-        
-        // console log the letetr you chose
-        console.log('guessLetter :'+ result.guessLetter)
+        // console log the letter you chose
+        console.log('Guessed Letter :'+ result.guessLetter)
 
         //this checks if the letter was found and if it is then it sets that specific letter in the word to be found
-
+        var letterFoundByUserGuess = this.currentWrd.
         //if the user guessed incorrectly minus the number of guesses they have left
         // and console.log if they were incorrect or correct
           
