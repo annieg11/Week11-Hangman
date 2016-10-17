@@ -15,7 +15,7 @@ var Letter = require('./letter.js');
 for(var i=0; i< this.word.length;i++){
   // To create new letter object.
  var newLetter = new Letter(this.word[i]);
- 
+ // pushes to newletter.
  this.let.push(newLetter);
 }
   };
