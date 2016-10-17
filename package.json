@@ -1,0 +1,23 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "Node app hangman",
+  "main": "main.js",
+  "dependencies": {
+    "inquirer": "^1.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annieg11/Week11-Hangman.git"
+  },
+  "author": "Annie",
+  "license": "MIT ",
+  "bugs": {
+    "url": "https://github.com/annieg11/Week11-Hangman/issues"
+  },
+  "homepage": "https://github.com/annieg11/Week11-Hangman#readme"
+}
