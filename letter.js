@@ -7,7 +7,6 @@ this.let =let;
 // property/boolean if the letter can be shown 
 this.letterShown = false;
   this.letterRender = function() {
-
     //if appear is false then show the _
     if(this.let==false){
       console.log('_');
