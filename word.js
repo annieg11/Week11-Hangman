@@ -22,9 +22,10 @@ for(var i=0; i< this.word.length;i++){
   
 //   found the current word
    this.didWeFindTheWord = function() {
-//  sets this.found in the word object to true or false if all letter objects have a true value in their appear property
-     this.Wordfound = true;
-     return this.Wordfound;
+//  sets this.Wordfound in the word object to true or false if all letter objects have a true value in their letterShown property
+     this.Wordfound = this.let.every(function(checkLet){
+      return checkLet.Wordfound;
+     }); 
    };
 
   this.checkIfLetterFound = function(guessLetter) {
@@ -32,7 +33,7 @@ for(var i=0; i< this.word.length;i++){
     //  iterate through the collection of letter Objects
     for(var i=0; i<this.let.length; i++){
       // if guessLetter matches Letter property, the letter object should be shown
-      if(this.let[i]===guessLetter){
+      if(this.let[i].let===guessLetter){
       this.let[i].letterShown = true;
       whatToReturn++;
       return whatToReturn;
@@ -45,10 +46,11 @@ for(var i=0; i< this.word.length;i++){
    this.wordRender = function() {
 //  render the word based on if letters are found or not found
 var str = "";
-str = this.let[i].letterRender();
+  for (var i=0; i <this.let.length; i++){
+    str += this.let[i].letterRender();
     return str;
     console.log('Word Rendered : ' + str);
-
+  }
    };
  }
 // var w = new Word('Thor');

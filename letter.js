@@ -10,7 +10,7 @@ this.letterShown = false;
     //if appear is false then show the _
     if(this.let==false){
       console.log('_');
-      //else appear is true then show character
+      //else letterShown is true then show character
     }else{
       console.log(this.let);
     }

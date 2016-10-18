@@ -10,15 +10,11 @@ var prompt = require('prompt');
 //require the objects/exports you will use
 prompt.start();
 
-var createGame = {
+    game = {
     wordBank : game(),// create or import a list of words
-    wordsWon : 0,// count of words Found
     guessesRemaining : 10, //per word
     currentWrd : null, //the word object
     startGame : function (wrd){
-    //make sure the user has 10 guesses
-    var userGuess = 10;
-
     //get a random word from the array
     var RandomWord = this.wordBank[Math.floor(Math.random()*this.wordBank.length)];
     console.log(RandomWord);
@@ -26,13 +22,12 @@ var createGame = {
     this.currentWrd = new Word(RandomWord);
     this.currentWrd.getLets();
     this.keepPromptingUser();
-
     }, 
   resetGuessesRemaining : function(){
     // reset guess count for new game 
   },
   keepPromptingUser : function(){
-    var self = this;
+    var userGuess = this;
 
     prompt.get(['guessLetter'], function(err, result) {
         // result is an object like this: { guessLetter: 'f' }
@@ -41,33 +36,57 @@ var createGame = {
         console.log('Guessed Letter :'+ result.guessLetter)
 
         //this checks if the letter was found and if it is then it sets that specific letter in the word to be found
-        var letterFoundByUserGuess = this.currentWrd.
+        var letterFoundByUserGuess = userGuess.currentWrd.checkIfLetterFound(result.guessLetter);
+
         //if the user guessed incorrectly minus the number of guesses they have left
         // and console.log if they were incorrect or correct
-          
+          if(letterFoundByUserGuess===0){
+            userGuess.guessesRemaining =-1;
+            console.log("You Guessed it Wrong!!");
+          }else{
+            console.log("You Guessed it Right!");
+          }
         //check if you win only when you are right
-        //end game
-       
-        
-        // display the user how many guesses remaining
-      
-        // render the word 
-        
-        // display letters the user has guessed
-
-        // if user has remaining guesses and Word isn't found
-      
-        // if user has no guesses left, show them the word and tell them they lost
-      
-        // else show the user word and rendered
-        
-    });
+        if (userGuess.currentWrd.didWeFindTheWord()) {
+          console.log("You Won!!!");
+          return 1;
+        }else {
+          // display the user how many guesses remaining
+          console.log("Guesses remaining:"+ userGuess.guessesRemaining);
+          // render the word 
+          console.log(userGuess.currentWrd.wordRender());
+          // if user has remaining guesses and Word isn't found
+          if (userGuess.guessesRemaining > 0 && userGuess.currentWrd.Wordfound === false){
+            userGuess.keepPromptingUser();
+           } else {
+            // if user has no guesses left, show them the word and tell them they lost
+            if (userGuess.guessesRemaining === 0){
+              console.log("Game Over !!"); 
+              console.log("The word Guessed was:"+userGuess.RandomWord);
+            }else {
+              // else show the user word and rendered
+              console.log(userGuess.currentWrd.wordRender());
+            }
+          }
+        }
+      });
+    }
   }
 
+   game.startGame();    
+        
+        
+      
+        
+        
+        
 
-};
+        
+        
+      
+  
 
-createGame.startGame();
+
 
 
 
