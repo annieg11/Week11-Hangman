@@ -41,7 +41,7 @@ prompt.start();
         //if the user guessed incorrectly minus the number of guesses they have left
         // and console.log if they were incorrect or correct
           if(letterFoundByUserGuess===0){
-            userGuess.guessesRemaining =-1;
+            userGuess.guessesRemaining ;
             console.log("You Guessed it Wrong!!");
           }else{
             console.log("You Guessed it Right!");
